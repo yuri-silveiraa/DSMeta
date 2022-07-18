@@ -15,14 +15,22 @@ function SalesCard() {
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
 
+    const mind = `${minDate.toLocaleDateString()}` // alterar a data para o formato YYYY-MM-DD
+    const minD = mind.split('/').reverse().join('-')
+    
+    const maxd = `${maxDate.toLocaleDateString()}`
+    const maxD = maxd.split('/').reverse().join('-')
+    
+
     const [sales, setSales] = useState<Sale[]>([])
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/sales`)
+        axios.get(`${BASE_URL}/sales?minDate=${minD}&maxDate=${maxD}`)
             .then(response => {
                 setSales(response.data.content);
+                console.log("mudou")
             })
-    }, []);
+    }, [minD, maxD]);
 
 
     return (
