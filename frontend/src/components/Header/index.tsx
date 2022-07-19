@@ -11,7 +11,7 @@ function Header() {
                     <h1>DSMeta</h1>
                     <p>
                         Desenvolvido por
-                        <a href="https://www.instagram.com/yurii_silveira"> @yurii_silveira</a>
+                        <a href="https://instagram.com/yurii_silveira"> @yurii_silveira</a>
                     </p>
                 </div>
             </header>

@@ -28,7 +28,7 @@ public class SmsService {
 	@Autowired
 	private SaleRepository saleRepository;
 	
-	public void sendSms(Long saleId) {
+	public String sendSms(Long saleId) {
 
 		Sale sale = saleRepository.findById(saleId).get();
 		
@@ -45,5 +45,6 @@ public class SmsService {
 		Message message = Message.creator(to, from, msg).create();
 
 		System.out.println(message.getSid());
+		return sale.getSellerName();
 	}
 }

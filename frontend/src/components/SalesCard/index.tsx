@@ -17,10 +17,9 @@ function SalesCard() {
 
     const mind = `${minDate.toLocaleDateString()}` // alterar a data para o formato YYYY-MM-DD
     const minD = mind.split('/').reverse().join('-')
-    
+
     const maxd = `${maxDate.toLocaleDateString()}`
     const maxD = maxd.split('/').reverse().join('-')
-    
 
     const [sales, setSales] = useState<Sale[]>([])
 
@@ -28,10 +27,8 @@ function SalesCard() {
         axios.get(`${BASE_URL}/sales?minDate=${minD}&maxDate=${maxD}`)
             .then(response => {
                 setSales(response.data.content);
-                console.log("mudou")
             })
     }, [minD, maxD]);
-
 
     return (
         <div className="dsmeta-card">
@@ -80,7 +77,7 @@ function SalesCard() {
                                     <td>{sale.amount.toFixed(2)}</td>
                                     <td>
                                         <div className="dsmeta-red-btn-container">
-                                            <NotificationButton />
+                                                <NotificationButton saleId={sale.id} />
                                         </div>
                                     </td>
                                 </tr>
